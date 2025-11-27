@@ -6,7 +6,7 @@ CORS(app)
 
 @app.route('/health')
 def health():
-    return {'status': 'ok'}
+    return {'status': 'Running'}
 
 if __name__ == '__main__':
     app.run(debug=True)

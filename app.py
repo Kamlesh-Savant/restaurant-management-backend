@@ -1,12 +1,34 @@
-from flask import Flask
-from flask_cors import CORS
+import os
+from flask import Flask, jsonify
+from dotenv import load_dotenv
+
+# Load .env variables
+load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
 
-@app.route('/health')
-def health():
-    return {'status': 'Running'}
+# Load Secret Key from .env
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+
+
+@app.route('/', methods=["GET"])
+def home():
+    return jsonify({"Message":"Welcome to Restorunt Management System Application"})
+
+############################################## Import New Modules Here Only ###############################################
+# Import modules at the bottom
+import modules.auth 
+
+
+
+###############################################
+
+
+
+
+
+
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)

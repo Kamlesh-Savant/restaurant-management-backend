@@ -15,6 +15,7 @@ def create_app():
 
 app = create_app()
 
+application = app
 @app.route('/', methods=["GET"])
 def home():
     return jsonify({"message": "Welcome to Restaurant Management System Application"})
